@@ -1,7 +1,6 @@
-minus();
-        // break;
-        // case '*':mul();
-        // break;
-        // case '/':div();
-        // break;
-        // default:char_fun();
+
+    // if(ch1>ch2){
+    //     t=ch1;
+    //     ch1=ch2;
+    //     ch2=t;
+    // }
