@@ -26,6 +26,8 @@ void Descending();
 
 void Reverse();
 
+int value(int);
+
 //Global Variables
 
 struct node
