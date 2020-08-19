@@ -291,8 +291,6 @@ int Length()
     {
         count++;
         temp = temp->link;
-
-        
     }
 
     return count;
@@ -364,7 +362,6 @@ void Delete1()
 
         temp = root;
 
-
         while (count1 < selection - 1)
         {
 
@@ -397,189 +394,208 @@ void Delete1()
     }
 }
 
-
-
 void Swap(int ch1, int ch2)
 {
-    printf("that:%d %d\n",ch1,ch2);
-    if(ch1-ch2==1 || ch1-ch2==-1){
-        if(ch1==1 || ch2==1){
-            struct node *temp,*p;
-            temp=root;
-            root=root->link;
-            p=root->link;
-            root->link=temp;
-            temp->link=p;
-
-
+    printf("that:%d %d\n", ch1, ch2);
+    if (ch1 - ch2 == 1 || ch1 - ch2 == -1)
+    {
+        if (ch1 == 1 || ch2 == 1)
+        {
+            struct node *temp, *p;
+            temp = root;
+            root = root->link;
+            p = root->link;
+            root->link = temp;
+            temp->link = p;
         }
-        else if(ch1==Length() || ch2==Length()){
-            struct node *temp,*p,*q,*q1;
-            p=root;
-            q=root;
-            q1=root;
-            int count=1,count1=1,count2=1;
-            while(count<Length()){
-                p=p->link;
+        else if (ch1 == Length() || ch2 == Length())
+        {
+            struct node *temp, *p, *q, *q1;
+            p = root;
+            q = root;
+            q1 = root;
+            int count = 1, count1 = 1, count2 = 1;
+            while (count < Length())
+            {
+                p = p->link;
                 count++;
             }
-            while(count1<Length()-1){
-                q=q->link;
+            while (count1 < Length() - 1)
+            {
+                q = q->link;
                 count1++;
             }
-            while(count2<Length()-2){
-                q1=q1->link;
+            while (count2 < Length() - 2)
+            {
+                q1 = q1->link;
                 count2++;
             }
-            q1->link=p;
-            p->link=q;
-            q->link=NULL;
-
-
+            q1->link = p;
+            p->link = q;
+            q->link = NULL;
         }
-        else{
-        int count=1,count1=1,count2=1,count3=1;
-        struct node *temp,*p,*q,*p1,*q1;
-        p=root;
-        q=root;
-        p1=root;
-        q1=root;
-        while(count<ch1){
-            p=p->link;
-            count++;
-        }
-        while(count1<ch2){
-            q=q->link;
-            count1++;
-        }
-        while(count2<ch1-1){
-            p1=p1->link;
-            count2++;
-        }
-        while(count3<ch2+1){
-            q1=q1->link;
-            count3++;
-        }
-        temp=p;
-        p1->link=p->link;
-        q->link=temp;
-        p->link=q1;
-    printf("Hello\n");}
-    }
-    else if(ch1-ch2==Length()-1 || ch1-ch2==1-Length()){
-        struct node *temp,*p,*q,*p2;
-        p=root;
-        q=root;
-        p2=root;
-        int count=1,count1=1,count2=1;
-        while(count<Length()){
-            p=p->link;
-            count++;
-        }
-        while(count1<Length()-1){
-            q=q->link;
-            count1++;
-        }
-        while(count2<2){
-            p2=p2->link;
-            count2++;
-        }
-        temp=root;
-        p->link=root->link;
-        root=p;
-        q->link=temp;
-        temp->link=NULL;
-}
-else{
-    if(ch1==1 || ch2==1){
-        struct node *p,*temp,*p1,*p2,*q1,*temp1;
-        temp=root;
-        p1=root;
-        p=root;
-        p2=root;
-        q1=root;
-        int count=1,count1=1,count2=1,count3=1;
-        if(ch1==1){
-                while(count<ch2){
-                    p=p->link;
-                    count++;
-                }
-                while(count1<ch2-1){
-                    p1=p1->link;
-                    count1++;
-                }
-                while(count2<ch2+1){
-                    p2=p2->link;
-                    count2++;
-                }
-                // while(count3<ch2+1){
-                //     p2=p2->link;
-                //     count3++;
-                // }
-                temp=root;
-                temp1=root->link;
-                root=p;
-                p->link=temp1;
-                p1->link=temp;
-                temp->link=p2;
-        }
-        else{
-            while(count<ch1){
-                p=p->link;
+        else
+        {
+            int count = 1, count1 = 1, count2 = 1, count3 = 1;
+            struct node *temp, *p, *q, *p1, *q1;
+            p = root;
+            q = root;
+            p1 = root;
+            q1 = root;
+            while (count < ch1)
+            {
+                p = p->link;
                 count++;
             }
-            while(count1<ch1-1){
-                p1=p1->link;
+            while (count1 < ch2)
+            {
+                q = q->link;
                 count1++;
             }
+            while (count2 < ch1 - 1)
+            {
+                p1 = p1->link;
+                count2++;
+            }
+            while (count3 < ch2 + 1)
+            {
+                q1 = q1->link;
+                count3++;
+            }
+            temp = p;
+            p1->link = p->link;
+            q->link = temp;
+            p->link = q1;
+            printf("Hello\n");
         }
-        
     }
-    else{
-    struct node *temp,*p,*q,*p1,*p2,*q1,*q2;
-        p=root;
-        q=root;
-        p1=root;
-        p2=root;
-        q1=root;
-        q2=root;
-        int count=1,count1=1,count2=1,count3=1,count4=1,count5=1;
-        while(count<ch1){
-            p=p->link;
+    else if (ch1 - ch2 == Length() - 1 || ch1 - ch2 == 1 - Length())
+    {
+        struct node *temp, *p, *q, *p2;
+        p = root;
+        q = root;
+        p2 = root;
+        int count = 1, count1 = 1, count2 = 1;
+        while (count < Length())
+        {
+            p = p->link;
             count++;
         }
-        while(count1<ch2){
-            q=q->link;
+        while (count1 < Length() - 1)
+        {
+            q = q->link;
             count1++;
         }
-        while(count2<ch1-1){
-            p1=p1->link;
+        while (count2 < 2)
+        {
+            p2 = p2->link;
             count2++;
         }
-        while(count3<ch2-1){
-            q1=q1->link;
-            count3++;
-        }
-        
-        while(count4<ch1+1){
-            p2=p2->link;
-            count4++;
-        }
-        
-        while(count5<ch2+1){
-            q2=q2->link;
-            count5++;
-        }
-        
-        p1->link=q1->link;
-        q->link=p2;
-        q1->link=p;
-        p->link=q2;
+        temp = root;
+        p->link = root->link;
+        root = p;
+        q->link = temp;
+        temp->link = NULL;
     }
-        
+    else
+    {
+        if (ch1 == 1 || ch2 == 1)
+        {
+            struct node *p, *temp, *p1, *p2, *q1, *temp1;
+            temp = root;
+            p1 = root;
+            p = root;
+            p2 = root;
+            q1 = root;
+            int count = 1, count1 = 1, count2 = 1, count3 = 1;
+            if (ch1 == 1)
+            {
+                while (count < ch2)
+                {
+                    p = p->link;
+                    count++;
+                }
+                while (count1 < ch2 - 1)
+                {
+                    p1 = p1->link;
+                    count1++;
+                }
+                while (count2 < ch2 + 1)
+                {
+                    p2 = p2->link;
+                    count2++;
+                }
+                
+                temp = root;
+                temp1 = root->link;
+                root = p;
+                p->link = temp1;
+                p1->link = temp;
+                temp->link = p2;
+            }
+            else
+            {
+                while (count < ch1)
+                {
+                    p = p->link;
+                    count++;
+                }
+                while (count1 < ch1 - 1)
+                {
+                    p1 = p1->link;
+                    count1++;
+                }
+            }
+        }
+        else
+        {
+            struct node *temp, *p, *q, *p1, *p2, *q1, *q2;
+            p = root;
+            q = root;
+            p1 = root;
+            p2 = root;
+            q1 = root;
+            q2 = root;
+            int count = 1, count1 = 1, count2 = 1, count3 = 1, count4 = 1, count5 = 1;
+            while (count < ch1)
+            {
+                p = p->link;
+                count++;
+            }
+            while (count1 < ch2)
+            {
+                q = q->link;
+                count1++;
+            }
+            while (count2 < ch1 - 1)
+            {
+                p1 = p1->link;
+                count2++;
+            }
+            while (count3 < ch2 - 1)
+            {
+                q1 = q1->link;
+                count3++;
+            }
 
+            while (count4 < ch1 + 1)
+            {
+                p2 = p2->link;
+                count4++;
+            }
 
-}
+            while (count5 < ch2 + 1)
+            {
+                q2 = q2->link;
+                count5++;
+            }
+
+            p1->link = q1->link;
+            q->link = p2;
+            q1->link = p;
+            p->link = q2;
+        }
+    }
 }
 void Sort()
 {
@@ -630,71 +646,68 @@ void Sort()
     }
 }
 
-
 void Descending()
 {
 
-  
-    
-        for(int i=1;i<=Length()-1;i++){
-            for(int j=i+1;j<=Length();j++){
-                if(value(i)<value(j)){
-                    
-                    Swap(i,j);
-                }
+    for (int i = 1; i <= Length() - 1; i++)
+    {
+        for (int j = i + 1; j <= Length(); j++)
+        {
+            if (value(i) < value(j))
+            {
+
+                Swap(i, j);
             }
         }
-  
+    }
 }
 
 void Ascending()
 {
 
-  
-    
-        for(int i=1;i<=Length()-1;i++){
-            for(int j=i+1;j<=Length();j++){
-                if(value(i)>value(j)){
-                    
-                    Swap(i,j);
-                }
+    for (int i = 1; i <= Length() - 1; i++)
+    {
+        for (int j = i + 1; j <= Length(); j++)
+        {
+            if (value(i) > value(j))
+            {
+
+                Swap(i, j);
             }
         }
-  
+    }
 }
-
-
-
 
 void Reverse()
 {
-    int count1=1,count2=Length();
+    int count1 = 1, count2 = Length();
 
     if (root != NULL)
     {
-        while(count1<=count2){
-            Swap(count1,count2);
+        while (count1 <= count2)
+        {
+            Swap(count1, count2);
             count1++;
             count2--;
         }
-        
     }
-    else{
-    
+    else
+    {
 
         printf("List Is Empty\n");
     }
 }
 
-int value(int i){
-    
-    struct node *temp;
-    temp=root;
-    int count=1;
-    while(count<i){
-        temp=temp->link;
-        count++;
+int value(int i)
+{
 
+    struct node *temp;
+    temp = root;
+    int count = 1;
+    while (count < i)
+    {
+        temp = temp->link;
+        count++;
     }
     return temp->data;
 }

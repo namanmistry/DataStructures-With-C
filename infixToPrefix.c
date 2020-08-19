@@ -21,6 +21,24 @@ void main(){
 printf("Enter The Expression: \n");
 scanf("%s",&input);
 
+
+int p=0,q=4;
+// printf("%d\n",q);
+while(p<=q)
+{
+    int temp;
+    temp=input[q];
+    input[q]=input[p];
+    input[p]=temp;
+    p++;
+    q--;
+    // printf("naman\n");
+}
+// for(int i=0;input[i]!='\0';i++){
+//     printf("%c",input[i]);
+
+// }
+
 for(int i=0;input[i]!='\0';i++){
     c=input[i];
     
@@ -53,15 +71,22 @@ while(top>=0){
     top--;
     
 }
-// int top1=5;
-// while(top1>=0){
-//    printf("stack element is:%c\n",stack[top1]);
-//     top1--;
-// }
-printf("Answer Is: %s\n",input);
-Reverse();
 
-printf("Answer Is: %s\n",input);
+int r=0,s=4;
+// printf("%d\n",q);
+while(r<=s)
+{
+    int temp1;
+    temp1=output[s];
+    output[s]=output[r];
+    output[r]=temp1;
+    r++;
+    s--;
+    // printf("naman\n");
+}
+
+
+printf("Answer Is: %s\n",output);
 }
 //+,-,*,/ Functions
 void plus(){
@@ -240,19 +265,11 @@ int isFull(){
     }
 }
 
+// int Length(){
+//     int count=0;
+//     for(int i=0;input[i]!='\0';i++){
+//         count++;
+//     }
+//     return count;
+// }
 
-void Reverse(){
-    int a=0;
-    for(int m=0;input[m]!='\0';m++){
-        a++;
-    }
-    for(int n=0;n!=m;n++){
-        char c;
-        c=input[n];
-        input[n]=input[a];
-        input[a]=c;
-        a--;
-        printf("%c %c\n",input[n],input[a]);
-    }
-
-}

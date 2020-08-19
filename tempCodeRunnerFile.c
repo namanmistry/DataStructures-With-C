@@ -1,6 +1,5 @@
-
-    // if(ch1>ch2){
-    //     t=ch1;
-    //     ch1=ch2;
-    //     ch2=t;
-    // }
+2;
+    // printf("Enter first number you want to swap: \n");
+    // scanf("%d",&ch1);
+    // printf("Enter second number you want to swap: \n");
+    // scanf("%d",&ch2);

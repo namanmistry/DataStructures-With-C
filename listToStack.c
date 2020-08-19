@@ -73,7 +73,7 @@ void Traverse(){
         p=p->link;
     }
     printf("\033[1;33m|%d|\033[0m\n",p->data);
-    printf("\033[1;33m ---\033[0m\n");
+    printf("\033[1;33m -\033[0m\n");
     
     }
     else{

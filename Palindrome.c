@@ -21,7 +21,7 @@ number=number/10;
 }
 
 for(int j=size-1;j>=0;j--){
-    
+
     push(p[j]);
 }
 

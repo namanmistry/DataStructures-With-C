@@ -14,7 +14,7 @@ struct pre{
 
 precedence[]={{'+',1},{'-',1},{'*',2},{'/',2}};
 
-int m,n;
+int m,n,o;
 
 void main(){
 //Scanning The expression
@@ -53,11 +53,7 @@ while(top>=0){
     top--;
     
 }
-// int top1=5;
-// while(top1>=0){
-//    printf("stack element is:%c\n",stack[top1]);
-//     top1--;
-// }
+
 
 printf("Answer Is: %s\n",output);
 }
@@ -71,6 +67,7 @@ void plus(){
         push('+');
     }
     else{
+        
         for(int i=0;i<=3;i++){
             if(stack[top]==precedence[i].op){
                 m=precedence[i].prec;
@@ -84,13 +81,30 @@ void plus(){
             output[j]=b;
             j++;
             stack[top]='+';
+            
         }
         else{
+            printf("namanbhia\n");
             char b=stack[top];
             output[j]=b;
             j++;
-
-            stack[top]='+';
+        //     for(int i=0;i<=3;i++){
+        //     if(stack[top]==precedence[i].op){
+        //         o=precedence[i].prec;
+        //     }
+        // }
+            if(m>1){
+                char d=stack[top-1];
+                output[j]=d;
+                j++;
+                top--;
+                
+            }
+            else{
+                // top++;
+                plus();
+            }
+            
         }
     }
 }
