@@ -37,45 +37,54 @@ switch(ch){
 }
 }
 
-
 void Insertion(){
     int data;
-    printf("Enter The Element You Want To Enter: \n");
+    printf("Enter the data you want ot enter: \n");
     scanf("%d",&data);
     if(rear==size){
-        printf("Queue Is Full\n");
+        printf("naman\n");
+        rear=0;
+        if(p[rear]==0){
+            p[rear]=data;
+            rear++;
+        }
+        else{
+            printf("Queue is full\n");
+        }
+        
+    }
+    else if(p[rear]==0){
+    p[rear]=data;
+    rear++;
     }
     else{
-        p[rear]=data;
-        rear++;
-    }
-    printf("%d\n",rear);
-}
-
-
-void Traverse(){
-    if(front==rear){
-        printf("Queue Is Empty\n");
-    }
-    else{
-        printf("Elements Are: \n");
-        for(int i=0;i<rear;i++){
-            printf("%d\n",*(p+i));
-    }
-
+        printf("Queue is full\n");
     }
 }
 
 void Deletion(){
-    if(front==rear){
-        printf("Queue Is Empty\n");
+    if(p[front]!=0){
+        p[front]=0;
+        front++;
     }
     else{
-        for(int i=0;i<rear;i++){
-            p[i]=*(p+i+1);
-            
-        }
-        rear--;
+        printf("Queue is empty\n");
     }
 }
+
+void Traverse(){
+    int temp=front;
+    int times=0;
+    while(times<5){
+        if(temp==size){
+            temp=0;
+        }
+        if(p[temp]!=0){
+        printf("Your element is:%d\n",p[temp]);
+        }
+        times++;
+        temp++;
+    }
+}
+
 //Ending Of the Declarations Of Functions

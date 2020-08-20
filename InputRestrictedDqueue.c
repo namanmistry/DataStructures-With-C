@@ -68,14 +68,27 @@ void Traverse(){
 
 void Deletion(){
     if(front==rear){
-        printf("Queue Is Empty\n");
+        printf("Queue is empty\n");
     }
     else{
+    int ch;
+    printf("From which end you want to delete\n");
+    printf("1.Front\n");
+    printf("2.Rear\n");
+    scanf("%d",&ch);
+    if(ch==1){
         for(int i=0;i<rear;i++){
-            p[i]=*(p+i+1);
-            
+            p[i]=p[i+1];
         }
         rear--;
+        
+    }
+    else if(ch==2){
+        rear--;
+    }
+    else{
+        printf("Operation Invalid\n");
+    }
     }
 }
 //Ending Of the Declarations Of Functions
