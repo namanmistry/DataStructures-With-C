@@ -42,10 +42,11 @@ void Insertion(){
     int data;
     printf("Enter The Element You Want To Enter: \n");
     scanf("%d",&data);
-    if(rear==size){
+    if(rear>=size){
         printf("Queue Is Full\n");
     }
     else{
+        
         p[rear]=data;
         rear++;
     }
@@ -59,8 +60,8 @@ void Traverse(){
     }
     else{
         printf("Elements Are: \n");
-        for(int i=0;i<rear;i++){
-            printf("%d\n",*(p+i));
+        for(int i=front;i<rear;i++){
+            printf("%d\n",p[i]);
     }
 
     }
@@ -71,11 +72,8 @@ void Deletion(){
         printf("Queue Is Empty\n");
     }
     else{
-        for(int i=0;i<rear;i++){
-            p[i]=*(p+i+1);
-            
-        }
-        rear--;
+        printf("front id:%d\n",front);
+        front++;
     }
 }
 //Ending Of the Declarations Of Functions

@@ -1,253 +1,95 @@
 #include<stdio.h>
-#include<stdlib.h>
-
-
-//Declarations Of Global Variables
-char stack[10],input[10],output[10];
-char c;
-int top=-1,j=0;
-
-struct pre{
-    char op;
+int stackPrecedence();
+int nextCharPrecedence(char);
+void push(char);
+char pop();
+//Declarations of global variables
+struct prec{
+    char sym;
     int prec;
-}
-
-precedence[]={{'+',1},{'-',1},{'*',2},{'/',2}};
-
-int m,n,o;
+};
+struct prec inputPrec[]={{'+',1},{'-',1},{'*',3},{'/',3},{'^',6},{'(',9},{')',0}};
+struct prec stackPrec[]={{'+',2},{'-',2},{'*',4},{'/',4},{'^',5},{'(',0}};
+int top=-1;
+char stack[50];
+char input[50];
+char output[50];
 
 void main(){
-//Scanning The expression
-printf("Enter The Expression: \n");
-scanf("%s",&input);
-
-for(int i=0;input[i]!='\0';i++){
-    c=input[i];
-    
-    switch(c){
-        case '+':plus();
-        break;
-        case '-':minus();
-        break;
-        case '*':mul();
-        break;
-        case '/':division();
-        break;
-        case '(':push('(');
-        break;
-        case ')':cbraces(')');
-        break;
-        default:char_fun(c);
-    }
-
-}
-
-while(top>=0){
-    if(stack[top]!=')'){
-        if(stack[top]!='('){
-        output[j]=stack[top];
-        j++;
-        }
-    }
-    
-    top--;
-    
-}
-
-
-printf("Answer Is: %s\n",output);
-}
-//+,-,*,/ Functions
-void plus(){
-    int top1=top1;
-    if(top==-1){
-        push('+');
-    }
-    else if(stack[top]=='('){
-        push('+');
-    }
-    else{
-        
-        for(int i=0;i<=3;i++){
-            if(stack[top]==precedence[i].op){
-                m=precedence[i].prec;
+    int i=0,j=0;
+    printf("Enter the expression: \n");
+    scanf("%s",input);
+    push('(');
+    // printf("input is:%s\n",input);
+    while(input[i]!='\0'){
+        if(nextCharPrecedence(input[i])>stackPrecedence()){
+            if(nextCharPrecedence(input[i])!=0){
+            push(input[i]);
             }
         }
-        if(m<1){
-            push('+');
+        else if(nextCharPrecedence(input[i])<stackPrecedence() && nextCharPrecedence(input[i])!=0){
+            while(nextCharPrecedence(input[i])<stackPrecedence()){
+                char temp=pop();
+                if(temp!='(' && temp!=')'){
+                    output[j]=temp;
+                    j++;
+                }
+            }
+            if(input[i]!=')'){
+    
+            push(input[i]);
+            }
         }
-        else if(m==1){
-            char b=stack[top];
-            output[j]=b;
-            j++;
-            stack[top]='+';
-            
-        }
-        else{
-            printf("namanbhia\n");
-            char b=stack[top];
-            output[j]=b;
-            j++;
-        //     for(int i=0;i<=3;i++){
-        //     if(stack[top]==precedence[i].op){
-        //         o=precedence[i].prec;
-        //     }
-        // }
-            if(m>1){
-                char d=stack[top-1];
-                output[j]=d;
+        else if(nextCharPrecedence(input[i])==0){
+            while(stack[top]!='('){
+                char temp=pop();
+                if(temp!='(' && temp!=')'){
+                output[j]=temp;
                 j++;
-                top--;
-                
+                }
             }
-            else{
-                // top++;
-                plus();
-            }
-            
+            char temp1=pop();
+           
         }
+        i++;
     }
+
+    while(top!=-1){
+       
+        char temp=pop();
+        if(temp!='(' && temp!=')'){
+        output[j]=temp;
+        j++;
+    }
+        }
+    printf("Ans is:%s",output);
 }
 
-void mul(){
-    if(top==-1){
-        push('*');
-    }
-    else if(stack[top]=='('){
-        push('*');
-    }
-    else{
-        for(int i=0;i<=3;i++){
-            if(stack[top]==precedence[i].op){
-                m=precedence[i].prec;
-            }
+int stackPrecedence(){
+    for(int i=0;i<6;i++){
+        if(stack[top]==stackPrec[i].sym){
+            return stackPrec[i].prec;
         }
-        if(m<2){
-            push('*');
-        }
-        else if(m==2){
-            char b=stack[top];
-            output[j]=b;
-            j++;
-            stack[top]='*';
-
-        }
-
     }
-    
-
+    return 8;
 }
 
-void division(){
-    if(top==-1){
-        push('/');
-    }
-    else if(stack[top]=='('){
-        push('/');
-    }
-    else{
-        for(int i=0;i<=3;i++){
-            if(stack[top]==precedence[i].op){
-                m=precedence[i].prec;
-            }
+int nextCharPrecedence(char ch){
+    for(int i=0;i<7;i++){
+        if(ch==inputPrec[i].sym){
+            return inputPrec[i].prec;
         }
-        if(m<2){
-            push('/');
-        }
-        else if(m==2){
-            char b=stack[top];
-            output[j]=b;
-            j++;
-            stack[top]='/';
-
-        }
-
-
     }
-    
-
+    return 7;
 }
 
-void minus(){
-    int top1=top1;
-    if(top==-1){
-        push('-');
-    }
-    else if(stack[top]=='('){
-        push('-');
-    }
-    else{
-        for(int i=0;i<=3;i++){
-            if(stack[top]==precedence[i].op){
-                m=precedence[i].prec;
-            }
-        }
-        if(m<1){
-            push('-');
-        }
-        else if(m==1){
-            char b=stack[top];
-            output[j]=b;
-            j++;
-
-            stack[top]='-';
-        }
-        else{
-            char b=stack[top];
-            output[j]=b;
-            j++;
-
-            stack[top]='-';
-        }
-    }
+void push(char ch){
+    top++;
+    stack[top]=ch;
 }
 
-
-void cbraces(){
-    if(open_finder()){
-        while(stack[top]!='('){
-    output[j]=stack[top];
-    top--;
-    j++;}
-    }
-}
-
-int open_finder(){
-    int top1=top;
-    char c;
-    while(top1>=0){
-        c=stack[top1];
-        if(c='('){
-            return 1;
-        }else{
-            return 0;
-        }
-        top1--;
-    }
-}
-void char_fun(char c){
-    output[j]=c;
-    j++;
-}
-//Stack Functions
-void push(char ele){
-    
-    if(isFull()){
-        printf("Stack is overflowed\n");
-    }
-    else{
-        top++;
-        stack[top]=ele;
-        
-        
-    }
-}
-
-int isFull(){
-    if(top>9){
-        return 1;
-    }
-    else{
-        return 0;
-    }
+char pop(){
+    char temp=stack[top];
+    --top;
+    return temp;
 }

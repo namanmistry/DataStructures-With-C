@@ -1,1 +1,3 @@
-lr
+e(stack[top]='('){
+    pop();
+}
