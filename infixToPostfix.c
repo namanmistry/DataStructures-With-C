@@ -20,7 +20,7 @@ void main(){
     printf("Enter the expression: \n");
     scanf("%s",input);
     push('(');
-    // printf("input is:%s\n",input);
+    if(rank()==1){
     while(input[i]!='\0'){
         if(nextCharPrecedence(input[i])>stackPrecedence()){
             if(nextCharPrecedence(input[i])!=0){
@@ -63,6 +63,10 @@ void main(){
     }
         }
     printf("Ans is:%s",output);
+    }
+    else{
+        printf("Please enter valid expression\n");
+    }
 }
 
 int stackPrecedence(){
@@ -92,4 +96,19 @@ char pop(){
     char temp=stack[top];
     --top;
     return temp;
+}
+
+int rank(){
+    int x=0;
+    int rank=0;
+    while(input[x]!='\0'){
+        if(input[x]=='+'|| input[x]=='-'||input[x]=='*'||input[x]=='/'||input[x]=='^'){
+            rank--;
+        }
+        else{
+            rank++;
+        }
+        x++;
+    }
+    return rank;
 }
