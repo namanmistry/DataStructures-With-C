@@ -2,13 +2,15 @@
 #include<stdlib.h>
 
 //Global Variables
-int front=0,rear=0,ch,size;
+int front=0,rear=0,ch,size,temp;
 int *p;
 
 //Prototypes Of Functions
 void Insertion();
 void Traverse();
-void Deletion();
+int Deletion();
+
+
 //Starting Of Declarations Of Functions
 void main(){
 printf("Enter The Size Of The Queue\n");
@@ -26,7 +28,8 @@ scanf("%d",&ch);
 switch(ch){
     case 1:Insertion();
     break;
-    case 2:Deletion();
+    case 2:temp=Deletion();
+    printf("Deleted element is:%d\n",temp);
     break;
     case 3:Traverse();
     break;
@@ -67,13 +70,14 @@ void Traverse(){
     }
 }
 
-void Deletion(){
+int Deletion(){
     if(front==rear){
         printf("Queue Is Empty\n");
     }
     else{
-        printf("front id:%d\n",front);
+        int temp=p[front];
         front++;
+        return temp;
     }
 }
 //Ending Of the Declarations Of Functions
